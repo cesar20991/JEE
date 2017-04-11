@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>WS REST DEMO</title>
+<script
+  src="https://code.jquery.com/jquery-3.2.0.min.js"
+  integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        dataType: "json", //si no se coloca esto se trata como string
+        url: "http://localhost:8080/WSREST/rest/demo/persona/1"
+    }).then(function(data) {             
+       $('.id').append(data.id);
+       $('.nombre').append(data.nombre);
+    });
+});
+</script>
+
+</head>
+<body>
+  	JAX-RS DEMO - Jersey Implementación
+  	<div>
+       <p class="id">ID: </p>
+       <p class="nombre">Nombre: </p>
+     </div>
+</body>
+</html>

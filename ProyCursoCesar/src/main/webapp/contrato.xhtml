@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
+		<ui:define name="content">
+			
+			<h2>Contratos</h2>
+			
+			<h:form id="frm">
+				<p:commandButton value="Nuevo" action="contratoForm" />
+				
+				<p:dataTable id="dtContratos" value="#{contratoBean.lstContratos}" var="c" emptyMessage="#{msg.mensaje_vacio}">
+				
+					<f:facet name="header">
+						<h:outputLabel value=" Exportar:  " />
+						<h:commandLink>
+							<p:dataExporter type="pdf" target="dtContratos" fileName="Contratos" pageOnly="true" />
+							<p:graphicImage library="images" name="pdf.jpg"/>
+						</h:commandLink>
+					</f:facet>
+					<p:column headerText="Persona">
+						<p:outputLabel value="#{c.persona.nombreCompleto}" />
+					</p:column>
+
+					<p:column headerText="Puesto">
+						<p:outputLabel value="#{c.puesto.nombre}" />
+					</p:column>
+
+					<p:column headerText="Fecha Inicio">
+						<p:outputLabel value="#{c.fechaInicio}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+
+					<p:column headerText="Fecha Fin">
+						<p:outputLabel value="#{c.fechaFin}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:outputLabel>
+					</p:column>
+
+					<!-- APLICANDO CONVERTER -> Revisar package converter -->
+					<p:column headerText="Estado" style="width: 60px">
+						<p:outputLabel>
+							<f:converter converterId="estadoConverter" />
+							<p:graphicImage library="images" name="check.jpg" rendered="#{c.estado eq '1'}" style="margin-left: 5px;" />
+							<p:graphicImage library="images" name="close.png" rendered="#{c.estado eq '0'}" style="margin-left: 5px;" />
+						</p:outputLabel>
+					</p:column>
+
+					<p:column headerText="Acciones" style="width: 60px">
+						<p:commandLink actionListener="#{contratoBean.seleccionar(c)}" action="contratoForm">
+							<p:graphicImage library="images" name="edit.jpg" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>
