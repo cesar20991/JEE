@@ -2,7 +2,6 @@
 All are maven projects.
 All examples do not use frameworks such as Spring, Hibernate and other.
 
-* *Author* : Cesar Augusto
 * *Technologies* : Java EE 7 (JSF 2.2, JPA 2.1,EJB 3.1, CDI 1.1, PrimeFaces 6.0, OmniFaces 2.5)
 * *Application Servers* : WildFly 10.x
 * *DB* : postgresql 9.x
@@ -26,11 +25,11 @@ Deploy on WildFly 10.x through Eclipse or with admin console.
 * 11_JSFDataTablePaginacion: JSF(Primefaces + paginator + GlobalFilter) + CDI(adding beans.xml - annotations) + JPA(adding persistence.xml)
 * 12_JSF_EJB_PoolConexiones: JSF + EJB + JPA 
 * 13 -> Proyecto 
-* 14_JAX-WS: 
-* 15_1_WSSOAP_CRUD: 
-* 15_2_WSSOAP_CLIENTE: 
-* 16_WSREST-JERSEY: 
-* 17_WSREST-JERSEY_CRUD: 
-* 18_WSREST_CLIENTE: 
-* 19_JUNIT: 
-* 
+* 14_JAX-WS: JAX-WS (@WebService(endpointInterface = "com.cesar20991.service.Demo"))
+* 14_WSCliente: Using Apache Axis
+* 15_1_WSSOAP_CRUD: WSDL created by Apache Axis + JDBC
+* 15_2_WSSOAP_CLIENTE: Using Apache Axis
+* 16_WSREST-JERSEY: Jersey simple
+* 17_WSREST-JERSEY_CRUD: Jersey + JDBC / Consuming by $.ajax 
+* 18_WSREST_CLIENTE: By console
+* 19_JUNIT: 2 examples 
