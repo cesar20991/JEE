@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PersonaServiceImplService WSDL service -->
+
+  <service name="PersonaServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://impl.service.cesar20991.com"/>
+      <parameter name="wsdlServiceElement" value="PersonaServiceImplService"/>
+      <parameter name="schemaQualified" value="http://model.cesar20991.com,http://impl.service.cesar20991.com"/>
+      <parameter name="wsdlServicePort" value="PersonaServiceImpl"/>
+      <parameter name="className" value="com.cesar20991.service.impl.PersonaServiceImpl"/>
+      <parameter name="wsdlPortType" value="PersonaServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://impl.service.cesar20991.com" name="registrar" qname="operNS:registrar" soapAction="">
+        <parameter xmlns:pns="http://impl.service.cesar20991.com" xmlns:tns="http://model.cesar20991.com" qname="pns:per" type="tns:Persona"/>
+      </operation>
+      <parameter name="allowedMethods" value="registrar"/>
+
+      <typeMapping xmlns:ns="http://model.cesar20991.com" qname="ns:Persona" type="java:com.cesar20991.model.Persona" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
