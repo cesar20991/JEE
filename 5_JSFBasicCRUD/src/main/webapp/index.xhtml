@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"    
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+ 
+    <h:head>
+        <title>Mantenimiento Persona</title>
+    </h:head>
+ 
+    <h:body>        
+        <h:form>
+        	<h:dataTable value="#{personaBean.lista}" var="per">
+        		<h:column>
+        			<f:facet name="header">
+        				<h:outputText value="id" />
+        			</f:facet>
+        			<h:outputText value="#{per.id}" />
+        		</h:column>
+        		
+        		<h:column>
+        			<f:facet name="header">
+        				<h:outputText value="nombres" />
+        			</f:facet>
+        			<h:outputText value="#{per.nombres}" />
+        		</h:column>
+        		
+        		<h:column>
+        			<f:facet name="header">
+        				<h:outputText value="apellidos" />        				
+        			</f:facet>
+        			<h:outputText value="#{per.apellidos}" />
+        		</h:column>
+        		
+        		<h:column>        			
+        			<h:commandLink action="persona" actionListener="#{personaBean.listarPorId(per)}" value="Actualizar" />        				        		
+        		</h:column>
+        		
+        		<h:column>        			
+        			<h:commandLink action="#{personaBean.eliminar(per)}" value="Remover" />
+        		</h:column>
+        	</h:dataTable>
+        	
+        	<h:commandButton action="persona" actionListener="#{personaBean.limpiarControles()}" value="Agregar" />
+        	<!-- <h:commandButton action="persona?faces-redirect=true" value="Agregar" /> -->
+        	
+<!--         	Opcional:  -->
+<!-- Usar navegacion explicita.(index?faces-redirect=true algo asi) Te olvidas de los valores anteriores -->
+<!-- se recomienda usar nagevacion implicita. (index)  -->
+<!-- JSF guarda el estado de la anterior petición y mantiene el .xhtml anterior -->
+        	
+        	
+        </h:form>
+    </h:body>
+ 
+</html>

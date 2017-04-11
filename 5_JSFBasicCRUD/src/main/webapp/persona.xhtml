@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="Id" />
+			<h:inputText value="#{personaBean.persona.id}"/>
+			
+			<h:outputText value="Nombre" />
+			<h:inputText value="#{personaBean.persona.nombres}"/>
+			
+			<h:outputText value="Apellidos" />
+			<h:inputText value="#{personaBean.persona.apellidos}"/>
+			
+			<h:commandButton action="index?faces-redirect=true" actionListener="#{personaBean.registrar()}" value="Aceptar" />
+			<h:commandButton action="index?faces-redirect=true" value="Cancelar" immediate="true"/>
+<!-- 			 immediate="true" se saltea 3 etapas  del ciclo de vida -> procesos validations, updatemodel values, de frente ira al invoke application -->
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
